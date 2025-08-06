@@ -1,0 +1,31 @@
+[
+  { "short": "g4b",
+    "key": "google/gemma-3n-e4b",
+    "display_name": "Gemma 3n E4B",
+    "architecture": "gemma3n",
+    "vision": false
+  },
+  { "short": "r1",
+    "key": "deepseek/deepseek-r1-0528-qwen3-8b",
+    "display_name": "Deepseek R1 0528 Qwen3 8B",
+    "architecture": "qwen3",
+    "vision": false
+  },
+  { "short": "g12",
+    "key": "google/gemma-3-12b",
+    "display_name": "Gemma 3 12B",
+    "architecture": "gemma3",
+    "vision": true
+  },
+  { "short": "g12",
+    "key": "google/gemma-3-12b",
+    "display_name": "Gemma 3 12B",
+    "architecture": "gemma3",
+    "vision": true
+  },
+  { "short": "Embedding",
+    "key": "text-embedding-nomic-embed-text-v1.5",
+    "display_name": "Nomic Embed Text v1.5",
+    "architecture": "nomic-bert"
+  }
+]
