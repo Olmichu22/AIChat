@@ -10,7 +10,7 @@ parser = argparse.ArgumentParser(description="Run Test on a Language Model")
 parser.add_argument("-i", "--input", type=str, required=False, help = "Folder with txt documents")
 parser.add_argument("-m", "--model", type=str, default="g4b", help = "Short name of the model. Options: g4b (Gemma3:4B), g12 (Gemma3:12B), r1 (DeepSeek-R1)")
 
-args: argparse.Namespace = parser.parse_args()
+args = parser.parse_args()
 
 input_folder = args.input
 
@@ -55,7 +55,9 @@ model: LLModel = LLModel(model_key)
 print("Introduce la consulta:")
 query = input()
 
+# Búsqueda RAG
 results = dc.search_similar_documents(query=query, n_results=5)
+# Guardamos copia de los resultados
 json_results = json.dumps(results, indent=2, ensure_ascii=False)
 
 context_prompt = " ".join([result["document"] for result in results])
