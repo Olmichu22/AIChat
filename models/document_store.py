@@ -10,15 +10,19 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 class DocumentStore():
 
     def __init__(
-        self, collection_name: str = "chats", persist_directory: str = "./chroma_db"
+        self, collection_name: str = "chats", persist_directory: str = "./chroma_db",
+        embedding_model = "light"
     ):
         self.client = chromadb.PersistentClient(path=persist_directory)
         self.collection = self.client.get_or_create_collection(
             name=collection_name,
             configuration={"hnsw": {"space": "cosine"}},
         )
+        embeddings = {"light" : "paraphrase-multilingual-MiniLM-L12-v2",
+                      "heavy" : "intfloat/e5-large-v2"}
+        
         self.embedding_model = SentenceTransformer(
-            "paraphrase-multilingual-MiniLM-L12-v2"
+            embeddings[embedding_model]
         )
         self.text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=1000,
