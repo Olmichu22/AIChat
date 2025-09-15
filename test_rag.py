@@ -1,7 +1,6 @@
 import os 
 from models.document_store import DocumentStore
 import json
-import lmstudio as lms
 import argparse
 from models.model import LLModel
 

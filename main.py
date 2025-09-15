@@ -14,7 +14,7 @@ def chat_with_gemma(user_message, chat_history, model):
     if chat_history is None:
         chat_history = []
     # Montar prompt con historial
-    prompt = "".join(f"Usuario: {u}\nAsistente: {a}\n" for u, a in chat_history)
+    prompt: str = "".join(f"Usuario: {u}\nAsistente: {a}\n" for u, a in chat_history)
     prompt += f"Usuario: {user_message}\nAsistente: "
 
     payload = {"model": model, "prompt": prompt}
@@ -31,7 +31,7 @@ def chat_with_gemma(user_message, chat_history, model):
         except json.JSONDecodeError:
             continue
 
-    reply = "".join(reply_chunks).strip()
+    reply: str = "".join(reply_chunks).strip()
     chat_history.append((user_message, reply))
     return "", chat_history, chat_history
 
